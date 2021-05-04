@@ -21,14 +21,5 @@
       <import plugin="org.eclipse.jdt.launching"/>
       <import plugin="org.eclipse.ui"/>
    </requires>
-   
-   <extension
-   		point="org.eclipse.ui.views">
-   		<view
-   			id="org.eclipse.contribution.junit.resultView"
-   			name="Contributed Result View"
-   			class="org.eclipse.contribution.junit.ResultView">
-   		</view>
-   	</extension>
 
 </plugin>

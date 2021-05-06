@@ -53,20 +53,20 @@ public class ViewColorTest extends TestCase {
 	
 	public void testResultViewGreen() throws PartInitException {
 		// Run tests
-		view.getListener().testsStarted(0);
-		view.getListener().testsFinished();
+		view.getListener().testsStarted(null, 0);
+		view.getListener().testsFinished(null);
 		Display display = view.getControl().getDisplay();
 		Color green = display.getSystemColor(SWT.COLOR_GREEN);
 		assertEquals(green, view.getControl().getBackground());
 	}
 	
 	public void testResultViewRed() throws PartInitException {
-		view.getListener().testsStarted(0);
-		view.getListener().testFailed("class", "method", "trace");
+		view.getListener().testsStarted(null, 0);
+		view.getListener().testFailed(null, "class", "method", "trace");
 		Display display = view.getControl().getDisplay();
 		Color red = display.getSystemColor(SWT.COLOR_RED);
 		assertEquals(red, view.getControl().getBackground());
-		view.getListener().testsFinished();
+		view.getListener().testsFinished(null);
 		assertEquals(red, view.getControl().getBackground());
 	}
 }

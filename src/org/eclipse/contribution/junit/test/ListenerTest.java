@@ -8,6 +8,7 @@ package org.eclipse.contribution.junit.test;
 
 import org.eclipse.contribution.junit.ITestRunListener;
 import org.eclipse.contribution.junit.JUnitPlugin;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IType;
 
@@ -28,7 +29,7 @@ public class ListenerTest extends TestCase {
 		/* (non-Javadoc)
 		 * @see org.eclipse.contribution.junit.ITestRunListener#testsStarted(int)
 		 */
-		public void testsStarted(int testCount) {
+		public void testsStarted(IJavaProject project, int testCount) {
 			// TODO Auto-generated method stub
 			
 		}
@@ -36,7 +37,7 @@ public class ListenerTest extends TestCase {
 		/* (non-Javadoc)
 		 * @see org.eclipse.contribution.junit.ITestRunListener#testsFinished()
 		 */
-		public void testsFinished() {
+		public void testsFinished(IJavaProject project) {
 			// TODO Auto-generated method stub
 			
 		}
@@ -44,7 +45,7 @@ public class ListenerTest extends TestCase {
 		/* (non-Javadoc)
 		 * @see org.eclipse.contribution.junit.ITestRunListener#testStarted(java.lang.String, java.lang.String)
 		 */
-		public void testStarted(String klass, String method) {
+		public void testStarted(IJavaProject project, String klass, String method) {
 			// TODO Auto-generated method stub
 			
 		}
@@ -52,7 +53,7 @@ public class ListenerTest extends TestCase {
 		/* (non-Javadoc)
 		 * @see org.eclipse.contribution.junit.ITestRunListener#testFailed(java.lang.String, java.lang.String, java.lang.String)
 		 */
-		public void testFailed(String klass, String method, String trace) {
+		public void testFailed(IJavaProject project, String klass, String method, String trace) {
 			// TODO Auto-generated method stub
 			testFailed = method + " " + klass;
 		}

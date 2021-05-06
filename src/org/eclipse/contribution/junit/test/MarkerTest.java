@@ -6,6 +6,8 @@
  */
 package org.eclipse.contribution.junit.test;
 
+import java.io.IOException;
+
 import org.eclipse.contribution.junit.JUnitPlugin;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
@@ -57,11 +59,18 @@ public class MarkerTest extends TestCase {
 		IMethod method = type.getMethods()[0];
 		int start = method.getSourceRange().getOffset();
 		assertEquals(start, marker.getAttribute(IMarker.CHAR_START, 0));
-		int end = method.getSourceRange().getLength();
+		int end = start + method.getSourceRange().getLength();
 		assertEquals(end, marker.getAttribute(IMarker.CHAR_END, 0));
 		assertTrue(marker.isSubtypeOf(
 				IJavaModelMarker.JAVA_MODEL_PROBLEM_MARKER));
 		assertEquals(IMarker.SEVERITY_ERROR,
 				marker.getAttribute(IMarker.SEVERITY, -1));
+	}
+	
+	public void testMarkerClearing() throws CoreException, IOException {
+		JUnitPlugin.getPlugin().run(type);
+		JUnitPlugin.getPlugin().run(type);
+		IMarker[] markers = getFailureMarkers();
+		assertEquals(1, markers.length);
 	}
 }
